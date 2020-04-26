@@ -8,11 +8,7 @@ const userSchema = new mongoose.Schema({
     hashedPassword: {
         type: String
     },
-    token: String,
-    courses: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course'
-    }]
+    token: String
 });
 
 userSchema.virtual('password');

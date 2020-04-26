@@ -15,6 +15,15 @@ const courseResolvers = require('./resolvers/course.resolvers');
 const userTypeDefs = require('./types/user.types');
 const userResolvers = require('./resolvers/user.resolvers');
 
+const leagueTypeDefs = require('./types/league.types');
+const leagueResolvers = require('./resolvers/league.resolvers');
+
+const teamTypeDefs = require('./types/team.types');
+const teamResolvers = require('./resolvers/team.resolvers');
+
+const playerTypeDefs = require('./types/player.types');
+const playerResolvers = require('./resolvers/player.resolvers');
+
 const authFunc = require('./libs/auth');
 
 mongoose.set('useUnifiedTopology', true);
@@ -47,8 +56,8 @@ const resolver = {};
 // app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 const server = new ApolloServer({
-    typeDefs: [typeDefs, courseTypeDefs, userTypeDefs],
-    resolvers: merge(resolver, courseResolvers, userResolvers),
+    typeDefs: [typeDefs, courseTypeDefs, userTypeDefs, leagueTypeDefs, teamTypeDefs, playerTypeDefs],
+    resolvers: merge(resolver, courseResolvers, userResolvers, leagueResolvers, teamResolvers, playerResolvers),
     context: authFunc
 });
 
