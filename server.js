@@ -24,6 +24,9 @@ const teamResolvers = require('./resolvers/team.resolvers');
 const playerTypeDefs = require('./types/player.types');
 const playerResolvers = require('./resolvers/player.resolvers');
 
+const matchTypeDefs = require('./types/match.types');
+const matchResolvers = require('./resolvers/match.resolvers');
+
 const authFunc = require('./libs/auth');
 
 mongoose.set('useUnifiedTopology', true);
@@ -56,8 +59,8 @@ const resolver = {};
 // app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 const server = new ApolloServer({
-    typeDefs: [typeDefs, courseTypeDefs, userTypeDefs, leagueTypeDefs, teamTypeDefs, playerTypeDefs],
-    resolvers: merge(resolver, courseResolvers, userResolvers, leagueResolvers, teamResolvers, playerResolvers),
+    typeDefs: [typeDefs, courseTypeDefs, userTypeDefs, leagueTypeDefs, teamTypeDefs, playerTypeDefs, matchTypeDefs],
+    resolvers: merge(resolver, courseResolvers, userResolvers, leagueResolvers, teamResolvers, playerResolvers, matchResolvers),
     context: authFunc
 });
 
