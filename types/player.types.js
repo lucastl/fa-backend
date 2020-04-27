@@ -19,6 +19,6 @@ module.exports = `
     extend type Mutation {
         addPlayer(input: PlayerInput, team: ID!): Player
         editPlayer(id: ID!, input: PlayerInput, team: ID!): Player
-        deletePlayer(id: ID!): Alert
+        deletePlayer(id: ID!, team: ID!): Alert
     }
 `
