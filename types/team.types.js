@@ -8,6 +8,18 @@ module.exports = `
         league: League
         players: [Player]
         location: String
+        statistics: Statistics
+    }
+
+    type Statistics{
+        gp: Int
+        tm: Int
+        lm: Int
+        wm: Int
+        gs: Int
+        gr: Int
+        dif: Int
+        pts: Int
     }
 
     input TeamInput{
@@ -26,6 +38,6 @@ module.exports = `
     extend type Mutation {
         addTeam(input: TeamInput, league: ID!): Team
         editTeam(id: ID!, input: TeamInput, league: ID!): Team
-        deleteTeam(id: ID!): Alert
+        deleteTeam(id: ID!, league: ID!): Alert
     }
 `

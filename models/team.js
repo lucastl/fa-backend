@@ -14,6 +14,16 @@ const teamSchema = new mongoose.Schema({
         ref: 'Player'
     }],
     location: String,
+    statistics: {
+        gp: Number, // Jugados
+        tm: Number, // Empatados
+        lm: Number, // Perdidos
+        wm: Number, // Ganados
+        gs: Number, // Goles a favor
+        gr: Number, // Goles recibidos
+        dif: Number, // Diferencia de goles
+        pts: Number, // Puntos
+    }
 });
 
 module.exports = mongoose.model('Team', teamSchema);

@@ -29,7 +29,11 @@ module.exports = {
             const team = await Team.findByIdAndUpdate(id, { ...input, league: league });
             return team;
         },
-        async deleteTeam(obj, { id }) {
+        async deleteTeam(obj, { id, league }) {
+            const leagueObj = await League.findById(league);
+            const deletedTeam = leagueObj.teams.filter( team => team._id.toString() !== id);
+            leagueObj.teams = deletedTeam;
+            await leagueObj.save();
             await Team.deleteOne({ _id: id })
             return {
                 message: `El equipo con id: ${id} se ha borrado.`
